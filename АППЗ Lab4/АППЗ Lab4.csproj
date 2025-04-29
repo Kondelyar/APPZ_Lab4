@@ -25,9 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="АППЗ Lab4.Library">
-      <HintPath>..\..\АППЗ Lab4.Library\АППЗ Lab4.Library\bin\Debug\net8.0\АППЗ Lab4.Library.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\АППЗ Lab5.ClassLibrary2\АППЗ Lab5.ClassLibrary2\АППЗ Lab5.LibraryBLL.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
