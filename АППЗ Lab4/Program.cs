@@ -1,8 +1,9 @@
-﻿using ContentLibrary.BLL;
+﻿using ContentLibrary.BLL.Interfaces;
+using ContentLibrary.BLL.Mapping;
 using ContentLibrary.BLL.Services;
 using ContentLibrary.DAL.DbContext;
-using ContentLibrary.DAL.Models;
-using ContentLibrary.DAL.Patterns;
+using ContentLibrary.DAL.UnitOfWork;
+using ContentLibrary.UI.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +20,6 @@ namespace ContentLibrary.UI
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            //Console.InputEncoding = System.Text.Encoding.UTF8;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Console.InputEncoding = Encoding.GetEncoding("Windows-1251");
 
@@ -33,7 +33,7 @@ namespace ContentLibrary.UI
             }
             else
             {
-                Console.WriteLine("Failed to initialize ConsoleApplication.");
+                Console.WriteLine("Помилка ініціалізації додатку.");
             }
 
             DisposeServices();
@@ -51,21 +51,26 @@ namespace ContentLibrary.UI
         {
             var services = new ServiceCollection();
 
-            // Подключаем DbContext
+            // Підключення DbContext
             services.AddDbContext<ContentLibraryDbContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
-            // Регистрируем generic-репозитории
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            // Реєстрація UnitOfWork
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            // Регистрируем специальные репозитории, если есть
-            services.AddScoped<ContentRepository<Book>>();
-            services.AddScoped<ContentRepository<Document>>();
-            services.AddScoped<ContentRepository<Video>>();
-            services.AddScoped<ContentRepository<Audio>>();
-            services.AddScoped<StorageRepository>();
+            // Реєстрація AutoMapper
+            services.AddAutoMapper(cfg =>
+            {
+                // Профілі для мапінгу між Entity і DTO (DAL -> BLL)
+                cfg.AddProfile<EntityToDtoMappingProfile>();
+                cfg.AddProfile<DtoToEntityMappingProfile>();
 
-            // Регистрируем сервисы
+                // Профілі для мапінгу між DTO і ViewModel (BLL -> UI)
+                cfg.AddProfile<DtoToViewModelMappingProfile>();
+                cfg.AddProfile<ViewModelToDtoMappingProfile>();
+            });
+
+            // Реєстрація сервісів
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IDocumentService, DocumentService>();
             services.AddScoped<IVideoService, VideoService>();
@@ -73,7 +78,7 @@ namespace ContentLibrary.UI
             services.AddScoped<IStorageService, StorageService>();
             services.AddScoped<ISearchService, SearchService>();
 
-            // Регистрируем консольное приложение
+            // Реєстрація консольного додатку
             services.AddScoped<ConsoleApplication>();
 
             _serviceProvider = services.BuildServiceProvider();

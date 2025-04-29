@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "АППЗ Lab4", "АППЗ L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "АППЗ Lab4.Library", "..\АППЗ Lab4.Library\АППЗ Lab4.Library\АППЗ Lab4.Library.csproj", "{CCDA2B06-68BE-4181-A043-E9EAED2FB5D8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "АППЗ Lab5.LibraryBLL", "..\АППЗ Lab5.ClassLibrary2\АППЗ Lab5.ClassLibrary2\АППЗ Lab5.LibraryBLL.csproj", "{7FDA7BEE-56D1-49AB-9CE0-98E6ED6BFE15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CCDA2B06-68BE-4181-A043-E9EAED2FB5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCDA2B06-68BE-4181-A043-E9EAED2FB5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCDA2B06-68BE-4181-A043-E9EAED2FB5D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FDA7BEE-56D1-49AB-9CE0-98E6ED6BFE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDA7BEE-56D1-49AB-9CE0-98E6ED6BFE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDA7BEE-56D1-49AB-9CE0-98E6ED6BFE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDA7BEE-56D1-49AB-9CE0-98E6ED6BFE15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
