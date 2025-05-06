@@ -183,25 +183,22 @@ namespace ContentLibrary.UI
         private void AddBook()
         {
             var bookForm = _uiFactory.CreateBookInputForm();
-            var bookData = (Book)bookForm.GetInputData(); // Явне приведення типу
+            var bookData = (Book)bookForm.GetInputData();
 
-            // Перетворення даних форми в ViewModel
             var bookViewModel = new BookViewModel
             {
                 Title = bookData.Title,
                 Description = bookData.Description,
                 Size = bookData.Size,
                 Format = bookData.Format.ToString(),
+                Type = ContentType.Book.ToString(), // Додано встановлення типу
                 Author = bookData.Author,
                 Publisher = bookData.Publisher,
                 ISBN = bookData.ISBN,
                 PageCount = bookData.PageCount
             };
 
-            // Мапимо ViewModel в DTO для сервісу
             var bookDto = _mapper.Map<BookDto>(bookViewModel);
-
-            // Викликаємо сервіс BLL
             _bookService.AddContent(bookDto);
 
             Console.WriteLine("Книгу успішно додано!");
@@ -453,6 +450,7 @@ namespace ContentLibrary.UI
                 Description = documentData.Description,
                 Size = documentData.Size,
                 Format = documentData.Format.ToString(),
+                Type = ContentType.Document.ToString(), // Додано встановлення типу
                 Author = documentData.Author,
                 DocumentType = documentData.DocumentType
             };
@@ -671,6 +669,7 @@ namespace ContentLibrary.UI
                 Description = videoData.Description,
                 Size = videoData.Size,
                 Format = videoData.Format.ToString(),
+                Type = ContentType.Video.ToString(), // Додано встановлення типу
                 Director = videoData.Director,
                 Duration = videoData.Duration,
                 Resolution = videoData.Resolution
@@ -883,6 +882,7 @@ namespace ContentLibrary.UI
                 Description = audioData.Description,
                 Size = audioData.Size,
                 Format = audioData.Format.ToString(),
+                Type = ContentType.Audio.ToString(), // Додано встановлення типу
                 Artist = audioData.Artist,
                 Duration = audioData.Duration
             };

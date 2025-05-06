@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="АППЗ_Lab4.Migrations.InitialCreate" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20250408210847_InitialCreate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="АППЗ_Lab4.Migrations.ContentLibraryDbContextModelSnapshot" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\ContentLibraryDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BookInputForm" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ConcreteForms.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DocumentInputForm" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ConcreteForms.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StorageInputForm" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ConcreteForms.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentMenu" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAYAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ContentMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputForm" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAACAAAAAAQAAAIABAAAAACAAA=</HashCode>
+      <FileName>UI\InputForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.ConsoleApplication" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABRQCvUQAQEgEAAAACADADCAJAAgABAAAAAQBgIgBAI=</HashCode>
+      <FileName>UI\ConsoleApplication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.ConsoleUIFactory" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAABAAAAAAQAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ConsoleUIFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.Program" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEQDAABAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.Mapping.DtoToViewModelMappingProfile" Collapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\UIMapperProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.Mapping.ViewModelToDtoMappingProfile" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\UIMapperProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.Mapping.ContentTypeDtoConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\UIMapperProfile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ContentLibrary.UI.Mapping.ContentFormatDtoConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\UIMapperProfile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ContentLibrary.UI.Mapping.StorageTypeDtoConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\UIMapperProfile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ContentLibrary.UI.ViewModels.ContentItemViewModel" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAggEAAAAAAAAAAAAgAAAAAAwAAAAAAAAA=</HashCode>
+      <FileName>UI\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.ViewModels.BookViewModel" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAiEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.ViewModels.DocumentViewModel" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.ViewModels.StorageViewModel" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAIAAAQCAAAAAAAgAQAIAAAAAAA=</HashCode>
+      <FileName>UI\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.ViewModels.ContentStorageViewModel" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAIAIAAAAAAAAAAAAAAABCgAAAAAAAA=</HashCode>
+      <FileName>UI\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ContentLibrary.UI.ViewModels.SearchResultViewModel" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAIAAAAACAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

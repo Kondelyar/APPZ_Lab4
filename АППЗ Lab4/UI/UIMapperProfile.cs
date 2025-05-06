@@ -37,52 +37,42 @@ namespace ContentLibrary.UI.Mapping
         }
     }
 
-    // Профіль для мапінгу ViewModel -> DTO
+    // Оновлений профіль для мапінгу ViewModel -> DTO
     public class ViewModelToDtoMappingProfile : Profile
     {
         public ViewModelToDtoMappingProfile()
         {
-            // Виправлений мапінг для рядкового представлення в енуми (без CS8198)
-            CreateMap<string, ContentTypeDto>().ConvertUsing<ContentTypeDtoConverter>();
-            CreateMap<string, ContentFormatDto>().ConvertUsing<ContentFormatDtoConverter>();
-            CreateMap<string, StorageTypeDto>().ConvertUsing<StorageTypeDtoConverter>();
+            // Використання методів замість лямбда-виразів
+            CreateMap<string, ContentTypeDto>().ConvertUsing(ConvertToContentTypeDto);
+            CreateMap<string, ContentFormatDto>().ConvertUsing(ConvertToContentFormatDto);
+            CreateMap<string, StorageTypeDto>().ConvertUsing(ConvertToStorageTypeDto);
 
-            // Мапінг для контентних моделей
+            // Решта мапінгу залишається незмінною
             CreateMap<BookViewModel, BookDto>();
             CreateMap<DocumentViewModel, DocumentDto>();
             CreateMap<VideoViewModel, VideoDto>();
             CreateMap<AudioViewModel, AudioDto>();
-
-            // Мапінг для сховища
             CreateMap<StorageViewModel, StorageDto>();
-
-            // Мапінг для ContentStorage
             CreateMap<ContentStorageViewModel, ContentStorageDto>();
         }
-    }
 
-    // Окремі класи конвертерів для уникнення помилки CS8198
-    public class ContentTypeDtoConverter : ITypeConverter<string, ContentTypeDto>
-    {
-        public ContentTypeDto Convert(string source, ContentTypeDto destination, ResolutionContext context)
+        // Методи конвертації
+        private ContentTypeDto ConvertToContentTypeDto(string source, ContentTypeDto destination, ResolutionContext context)
         {
-            return Enum.TryParse(source, out ContentTypeDto result) ? result : ContentTypeDto.Book;
+            ContentTypeDto result;
+            return Enum.TryParse(source, out result) ? result : ContentTypeDto.Book;
         }
-    }
 
-    public class ContentFormatDtoConverter : ITypeConverter<string, ContentFormatDto>
-    {
-        public ContentFormatDto Convert(string source, ContentFormatDto destination, ResolutionContext context)
+        private ContentFormatDto ConvertToContentFormatDto(string source, ContentFormatDto destination, ResolutionContext context)
         {
-            return Enum.TryParse(source, out ContentFormatDto result) ? result : ContentFormatDto.PDF;
+            ContentFormatDto result;
+            return Enum.TryParse(source, out result) ? result : ContentFormatDto.PDF;
         }
-    }
 
-    public class StorageTypeDtoConverter : ITypeConverter<string, StorageTypeDto>
-    {
-        public StorageTypeDto Convert(string source, StorageTypeDto destination, ResolutionContext context)
+        private StorageTypeDto ConvertToStorageTypeDto(string source, StorageTypeDto destination, ResolutionContext context)
         {
-            return Enum.TryParse(source, out StorageTypeDto result) ? result : StorageTypeDto.LocalDisk;
+            StorageTypeDto result;
+            return Enum.TryParse(source, out result) ? result : StorageTypeDto.LocalDisk;
         }
     }
 }
