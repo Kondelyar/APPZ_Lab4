@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "АППЗ Lab5.LibraryBLL", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab6.BLL.Tests", "Lab6.BLL.Tests\Lab6.BLL.Tests.csproj", "{0FBCBC00-42C3-4862-955E-3B29CD170978}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentLibrary.WebApi", "ContentLibrary.WebApi\ContentLibrary.WebApi.csproj", "{34A284FF-C6D8-489B-9FD7-D38348F798C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0FBCBC00-42C3-4862-955E-3B29CD170978}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FBCBC00-42C3-4862-955E-3B29CD170978}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FBCBC00-42C3-4862-955E-3B29CD170978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A284FF-C6D8-489B-9FD7-D38348F798C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A284FF-C6D8-489B-9FD7-D38348F798C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A284FF-C6D8-489B-9FD7-D38348F798C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A284FF-C6D8-489B-9FD7-D38348F798C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

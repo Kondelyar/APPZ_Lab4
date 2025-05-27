@@ -6,10 +6,6 @@ using ContentLibrary.DAL.Patterns;
 using ContentLibrary.DAL.UnitOfWork;
 using ContentLibrary.Tests.TestHelpers;
 using NSubstitute;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 
 namespace ContentLibrary.Tests
@@ -73,8 +69,7 @@ namespace ContentLibrary.Tests
         [Test]
         public void GetAllContent_ShouldReturnAllBooks()
         {
-            // Замість використання AutoFixture для створення складних об'єктів,
-            // створимо простіші заглушки
+
             var bookDtos = new List<BookDto> {
                 new BookDto { Id = 1, Title = "Test Book 1" },
                 new BookDto { Id = 2, Title = "Test Book 2" },

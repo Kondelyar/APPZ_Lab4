@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сховища - Бібліотека контенту</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Бібліотека контенту</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Головна</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="books.html">Книги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="storages.html">Сховища</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mb-4">Управління сховищами</h1>
+
+        <!-- Кнопки дій -->
+        <div class="mb-4">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addStorageModal">
+                <i class="bi bi-plus-circle"></i> Додати сховище
+            </button>
+            <button type="button" class="btn btn-secondary" id="refreshStorages">
+                <i class="bi bi-arrow-clockwise"></i> Оновити
+            </button>
+        </div>
+
+        <!-- Фільтр за типом -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Фільтрація сховищ</h5>
+                <div class="row">
+                    <div class="col-md-4 mb-2">
+                        <label for="storageTypeFilter" class="form-label">Тип сховища:</label>
+                        <div class="input-group">
+                            <select class="form-select" id="storageTypeFilter">
+                                <option value="">Усі типи</option>
+                                <option value="LocalDisk">Локальний диск</option>
+                                <option value="NetworkDrive">Мережеве сховище</option>
+                                <option value="Cloud">Хмарне сховище</option>
+                                <option value="ExternalDrive">Зовнішній носій</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="button" id="searchByType">Фільтрувати</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Таблиця сховищ -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Список сховищ</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Назва</th>
+                                <th>Тип</th>
+                                <th>Розташування</th>
+                                <th>Загальна ємність (ГБ)</th>
+                                <th>Використано (ГБ)</th>
+                                <th>Доступно (ГБ)</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody id="storagesTableBody">
+                            <!-- Тут будуть дані сховищ з JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для додавання сховища -->
+    <div class="modal fade" id="addStorageModal" tabindex="-1" aria-labelledby="addStorageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStorageModalLabel">Додати нове сховище</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addStorageForm">
+                        <div class="mb-3">
+                            <label for="storageName" class="form-label">Назва сховища:</label>
+                            <input type="text" class="form-control" id="storageName" name="storageName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="storageType" class="form-label">Тип сховища:</label>
+                            <select class="form-select" id="storageType" name="storageType" required>
+                                <option value="LocalDisk">Локальний диск</option>
+                                <option value="NetworkDrive">Мережеве сховище</option>
+                                <option value="Cloud">Хмарне сховище</option>
+                                <option value="ExternalDrive">Зовнішній носій</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="storageLocation" class="form-label">Розташування сховища:</label>
+                            <input type="text" class="form-control" id="storageLocation" name="storageLocation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="storageCapacity" class="form-label">Ємність (ГБ):</label>
+                            <input type="number" step="0.01" min="0.01" class="form-control" id="storageCapacity" name="storageCapacity" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-primary" id="saveStorageBtn">Зберегти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для редагування сховища -->
+    <div class="modal fade" id="editStorageModal" tabindex="-1" aria-labelledby="editStorageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editStorageModalLabel">Редагувати сховище</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editStorageForm">
+                        <input type="hidden" id="editStorageId">
+                        <div class="mb-3">
+                            <label for="editStorageName" class="form-label">Назва сховища:</label>
+                            <input type="text" class="form-control" id="editStorageName" name="editStorageName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStorageType" class="form-label">Тип сховища:</label>
+                            <select class="form-select" id="editStorageType" name="editStorageType" required>
+                                <option value="LocalDisk">Локальний диск</option>
+                                <option value="NetworkDrive">Мережеве сховище</option>
+                                <option value="Cloud">Хмарне сховище</option>
+                                <option value="ExternalDrive">Зовнішній носій</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStorageLocation" class="form-label">Розташування сховища:</label>
+                            <input type="text" class="form-control" id="editStorageLocation" name="editStorageLocation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStorageCapacity" class="form-label">Ємність (ГБ):</label>
+                            <input type="number" step="0.01" min="0.01" class="form-control" id="editStorageCapacity" name="editStorageCapacity" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-primary" id="updateStorageBtn">Оновити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© 2025 Бібліотека контенту. Всі права захищено.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storages.js"></script>
+</body>
+</html>

@@ -134,12 +134,14 @@ namespace ContentLibrary.Tests
         public void AddStorage_ShouldAddStorageToRepository()
         {
             // Arrange
-            var storageDto = Fixture.Create<StorageDto>();
+            var storageDto = Fixture.Create<StorageDto>();  // Створення dummy-об'єкта
             var storageEntity = Fixture.Create<Storage>();
 
             _mapper.Map<Storage>(storageDto).Returns(storageEntity);
 
             // Act
+            // Dummy-об'єкт storageDto не використовується безпосередньо в тесті,
+            // але потрібен для виклику тестованого методу
             _storageService.AddStorage(storageDto);
 
             // Assert

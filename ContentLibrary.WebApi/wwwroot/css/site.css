@@ -1,0 +1,66 @@
+﻿/* Загальні стилі */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+/* Стилі для таблиць */
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* Стилі для карток */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Стилі для кнопок дій в таблиці */
+.btn-action {
+    margin-right: 5px;
+}
+
+/* Стилі для заголовків сторінок */
+h1 {
+    color: #0d6efd;
+    margin-bottom: 1.5rem;
+}
+
+/* Стилі для навігації */
+.navbar {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Стилі для модальних вікон */
+.modal-header {
+    background-color: #f8f9fa;
+}
+
+/* Стилі для повідомлень про помилки */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Стилі для індикаторів завантаження */
+.spinner-border-sm {
+    margin-right: 0.5rem;
+}
+
+/* Стилі для індикаторів використання сховища */
+.storage-usage {
+    height: 20px;
+    margin-top: 5px;
+}

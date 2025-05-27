@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги - Бібліотека контенту</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Бібліотека контенту</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Головна</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="books.html">Книги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="storages.html">Сховища</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mb-4">Управління книгами</h1>
+
+        <!-- Кнопки дій -->
+        <div class="mb-4">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addBookModal">
+                <i class="bi bi-plus-circle"></i> Додати книгу
+            </button>
+            <button type="button" class="btn btn-secondary" id="refreshBooks">
+                <i class="bi bi-arrow-clockwise"></i> Оновити
+            </button>
+        </div>
+
+        <!-- Фільтри пошуку -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Пошук книг</h5>
+                <div class="row">
+                    <div class="col-md-4 mb-2">
+                        <label for="authorFilter" class="form-label">Автор:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="authorFilter">
+                            <button class="btn btn-outline-primary" type="button" id="searchByAuthor">Знайти</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label for="publisherFilter" class="form-label">Видавець:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="publisherFilter">
+                            <button class="btn btn-outline-primary" type="button" id="searchByPublisher">Знайти</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <label for="isbnFilter" class="form-label">ISBN:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="isbnFilter">
+                            <button class="btn btn-outline-primary" type="button" id="searchByISBN">Знайти</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Таблиця книг -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Список книг</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Назва</th>
+                                <th>Автор</th>
+                                <th>Видавець</th>
+                                <th>ISBN</th>
+                                <th>Формат</th>
+                                <th>Розмір (МБ)</th>
+                                <th>Кількість сторінок</th>
+                                <th>Дата створення</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody id="booksTableBody">
+                            <!-- Тут будуть дані книг з JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для додавання книги -->
+    <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBookModalLabel">Додати нову книгу</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addBookForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="title" class="form-label">Назва:</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="author" class="form-label">Автор:</label>
+                                <input type="text" class="form-control" id="author" name="author" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="publisher" class="form-label">Видавець:</label>
+                                <input type="text" class="form-control" id="publisher" name="publisher">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="isbn" class="form-label">ISBN:</label>
+                                <input type="text" class="form-control" id="isbn" name="isbn">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="format" class="form-label">Формат:</label>
+                                <select class="form-select" id="format" name="format" required>
+                                    <option value="PDF">PDF</option>
+                                    <option value="EPUB">EPUB</option>
+                                    <option value="MOBI">MOBI</option>
+                                    <option value="FB2">FB2</option>
+                                    <option value="TXT">TXT</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="size" class="form-label">Розмір (МБ):</label>
+                                <input type="number" step="0.01" min="0.01" class="form-control" id="size" name="size" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="pageCount" class="form-label">Кількість сторінок:</label>
+                                <input type="number" min="1" class="form-control" id="pageCount" name="pageCount" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Опис:</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-primary" id="saveBookBtn">Зберегти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для редагування книги -->
+    <div class="modal fade" id="editBookModal" tabindex="-1" aria-labelledby="editBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editBookModalLabel">Редагувати книгу</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editBookForm">
+                        <input type="hidden" id="editBookId">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editTitle" class="form-label">Назва:</label>
+                                <input type="text" class="form-control" id="editTitle" name="editTitle" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editAuthor" class="form-label">Автор:</label>
+                                <input type="text" class="form-control" id="editAuthor" name="editAuthor" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editPublisher" class="form-label">Видавець:</label>
+                                <input type="text" class="form-control" id="editPublisher" name="editPublisher">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editIsbn" class="form-label">ISBN:</label>
+                                <input type="text" class="form-control" id="editIsbn" name="editIsbn">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editFormat" class="form-label">Формат:</label>
+                                <select class="form-select" id="editFormat" name="editFormat" required>
+                                    <option value="PDF">PDF</option>
+                                    <option value="EPUB">EPUB</option>
+                                    <option value="MOBI">MOBI</option>
+                                    <option value="FB2">FB2</option>
+                                    <option value="TXT">TXT</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="editSize" class="form-label">Розмір (МБ):</label>
+                                <input type="number" step="0.01" min="0.01" class="form-control" id="editSize" name="editSize" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="editPageCount" class="form-label">Кількість сторінок:</label>
+                                <input type="number" min="1" class="form-control" id="editPageCount" name="editPageCount" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDescription" class="form-label">Опис:</label>
+                            <textarea class="form-control" id="editDescription" name="editDescription" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-primary" id="updateBookBtn">Оновити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для додавання книги в сховище -->
+    <div class="modal fade" id="addToStorageModal" tabindex="-1" aria-labelledby="addToStorageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addToStorageModalLabel">Додати книгу до сховища</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="bookToStorageId">
+                    <div class="mb-3">
+                        <label for="storageSelect" class="form-label">Виберіть сховище:</label>
+                        <select class="form-select" id="storageSelect" required>
+                            <!-- Тут будуть дані сховищ з JavaScript -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="storagePath" class="form-label">Шлях до файлу:</label>
+                        <input type="text" class="form-control" id="storagePath" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-primary" id="addToStorageBtn">Додати</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для перегляду сховищ книги -->
+    <div class="modal fade" id="viewStoragesModal" tabindex="-1" aria-labelledby="viewStoragesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewStoragesModalLabel">Сховища для книги</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Назва</th>
+                                <th>Тип</th>
+                                <th>Розташування</th>
+                                <th>Шлях</th>
+                                <th>Дії</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookStoragesTableBody">
+                            <!-- Тут будуть дані сховищ з JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© 2025 Бібліотека контенту. Всі права захищено.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/books.js"></script>
+</body>
+</html>
